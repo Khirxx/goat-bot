@@ -2,16 +2,16 @@ const axios = require('axios');
 
 module.exports = {
 	config: {
-		name: "addwaifu",
+		name: "حريم",
 		aliases: ["addwaifu"],
 		version: "1.0",
 		author: "@tas33n",
 		countDown: 5,
 		role: 2,
-		shortDescription: "add waifu for waifu harem bot",
+		shortDescription: "إضافة waifu لبوت waifu الحريم",
 		longDescription: "",
 		category: "harem kings",
-		guide: "{pn} waifu Name"
+		guide: "{pn} عيون وايفو"
 	},
 
 	onStart: async function ({ message, args, event }) {
@@ -28,7 +28,7 @@ module.exports = {
 			message.reply(form);
 		} catch (e) {
 			console.log(e)
-			message.reply('🥺 error')
+			message.reply('🥺 خطأ ')
 		}
 
 	}
