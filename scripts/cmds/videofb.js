@@ -4,22 +4,22 @@ const qs = require("qs");
 
 module.exports = {
 	config: {
-		name: "videofb",
-		version: "1.2",
+		name: "فايسبوك",
+		version: "1.1",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		shortDescription: {
 			vi: "Tải video từ facebook",
-			en: "Download video from facebook"
+			en: " تحميل من الفايسبوك  "
 		},
 		longDescription: {
 			vi: "Tải video/story từ facebook (công khai)",
-			en: "Download video/story from facebook (public)"
+			en: "تحميل ستوريات و فيديوهات عامة من الفايسبوك"
 		},
-		category: "media",
+		category: "الخدمات",
 		guide: {
-			en: "   {pn} <url video/story>: tải video từ facebook"
+			en: " [فايسبوك [رابط"
 		}
 	},
 
@@ -31,10 +31,10 @@ module.exports = {
 			tooLarge: "Rất tiếc không thể tải video cho bạn vì dung lượng lớn hơn 83MB"
 		},
 		en: {
-			missingUrl: "Please enter the facebook video/story (public) url you want to download",
-			error: "An error occurred while downloading the video",
-			downloading: "Downloading video for you",
-			tooLarge: "Sorry, we can't download the video for you because the size is larger than 83MB"
+			missingUrl: "يبدو ان الرابط تالف او ان الرابط لشخص قام بقفل حسابو الشخصي احضر رابط مختلف ",
+			error:"حدث خطأ اعد المحاولة  ",
+			downloading: "انتظر قليلا جاري تحميل الفديو...",
+			tooLarge: "انا مو واي فاي ابوك عشان احملك فديو 100 ميجة 😒"
 		}
 	},
 
@@ -71,20 +71,6 @@ module.exports = {
 };
 
 
-function convertTime(hms) {
-	if (hms.length < 3) {
-		return hms;
-	}
-	else if (hms.length < 6) {
-		const a = hms.split(':');
-		return hms = (+a[0]) * 60 + (+a[1]);
-	}
-	else {
-		const a = hms.split(':');
-		return hms = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-	}
-}
-
 async function fbDownloader(url) {
 	try {
 		const response1 = await axios.get("https://fdownloader.net");
@@ -97,19 +83,27 @@ async function fbDownloader(url) {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
 			data: qs.stringify({
-				'q': url,
+				q: url,
 				k_exp,
-				k_token
+				k_token,
+				v: 'v2'
 			})
 		});
 
-		const $ = cheerio.load(response.data.data);
+		let html;
+		const evalCode = response.data.data.replace('return decodeURIComponent', 'html = decodeURIComponent');
+		eval(evalCode);
+		html = html.split('innerHTML = "')[1].split('";\n')[0].replace(/\\"/g, '"');
+
+		const $ = cheerio.load(html);
 		const download = [];
-		$("#fbdownloader > div.tab-wrap > div:nth-child(5) > table > tbody > tr").each(function (i, elem) {
+
+		$("#fbdownloader").find("table").find("tbody").find("tr").each(function (i, elem) {
 			const trElement = $(elem);
 			const tds = trElement.children();
 			const quality = $(tds[0]).text().trim();
 			const url = $(tds[2]).children("a").attr("href");
+			
 			if (url != undefined) {
 				download.push({
 					quality,
@@ -120,7 +114,7 @@ async function fbDownloader(url) {
 
 		return {
 			success: true,
-			video_length: convertTime($("div.clearfix > p").text().trim()),
+			video_length: $("div.clearfix > p").text().trim(),
 			download
 		};
 	}
