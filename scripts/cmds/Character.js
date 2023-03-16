@@ -2,22 +2,22 @@ const axios = require('axios');
 
 module.exports = {
 	config: {
-		name: "character",
+		name: "شخصية",
 		aliases: ["character"],
 		version: "1.0",
 		author: "@tas33n",
 		countDown: 5,
 		role: 0,
-		shortDescription: "get character data",
-		longDescription: "search and get character infos",
+		shortDescription: "الحصول على بيانات الشخصية",
+		longDescription: "البحث والحصول على معلومات شخصية",
 		category: "anime",
-		guide: "{pn} {{<name>}}"
+		guide: "{pn} {{<اسم>}}"
 	},
 
 	onStart: async function ({ message, args }) {
 		const name = args.join(" ");
 		if (!name)
-			return message.reply(`⚠️ | Please enter character name!`);
+			return message.reply(`⚠️ | الرجاء إدخال اسم الشخصية!`);
 		else {
 			const BASE_URL = `https://api.safone.tech/anime/character?query=${name}`;
 			try {
@@ -34,18 +34,18 @@ module.exports = {
 				let img = res2.image.large
 				const form = {
 					body: `===「 Character Info 」===`
-						+ `\n\n👤 Name: ${nm}`
-						+ `\n🚻 Gender: ${gen}`
-						+ `\n🗓️ Age: ${ag}`
-						+ `\n👖 Height: ${heit}`
-						+ `\n\n📺 Anime & Manga: ${anim}`
-						+ `\n\n🔉 Description: ${desc}`
+						+ `\n\n👤 الاسم: ${nm}`
+						+ `\n🚻 جنس: ${gen}`
+						+ `\n🗓️ عمر: ${ag}`
+						+ `\n👖 ارتفاع: ${heit}`
+						+ `\n\n📺 أنيمي مانغا: ${anim}`
+						+ `\n\n🔉 وصف: ${desc}`
 
 				};
 				if (img)
 					form.attachment = await global.utils.getStreamFromURL(img);
 				message.reply(form);
-			} catch (e) { message.reply(`🥺 Not Found`) }
+			} catch (e) { message.reply(`🥺غير معثور عليه `) }
 
 		}
 	}
