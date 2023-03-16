@@ -18,13 +18,13 @@ module.exports = {
 			defaultLeaveMessage: "{userName} đã {type} khỏi nhóm"
 		},
 		en: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			leaveType1: "left",
-			leaveType2: "was kicked from",
-			defaultLeaveMessage: "{userName} {type} the group"
+			session1: "صباحا",
+			session2: "مساءا",
+			session3: "بعد المساء",
+			session4: "ليلا",
+			leaveType1: "غادر",
+			leaveType2: "تم طرده",
+			defaultLeaveMessage: "{userName} {type} من المجموعة {boxName}"
 		}
 	},
 
@@ -42,11 +42,7 @@ module.exports = {
 
 				const threadName = threadData.threadName;
 				const userName = await usersData.getName(leftParticipantFbId);
-let antiout = await threadsData.get(threadID, "settings.antiOut");
 
-        if(antiout == true){
-          api.addUserToGroup(leftParticipantFbId, threadID)
-        }
 				// {userName}   : name of the user who left the group
 				// {type}       : type of the message (leave)
 				// {boxName}    : name of the box
@@ -95,7 +91,6 @@ let antiout = await threadsData.get(threadID, "settings.antiOut");
 						.filter(({ status }) => status == "fulfilled")
 						.map(({ value }) => value);
 				}
-        
 				message.send(form);
 			};
 	}

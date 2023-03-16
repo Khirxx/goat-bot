@@ -4,7 +4,7 @@ module.exports = {
 	config: {
 		name: "logsbot",
 		isBot: true,
-		version: "1.2",
+		version: "1.3",
 		author: "NTKhang",
 		countDown: 5,
 		envConfig: {
@@ -20,10 +20,10 @@ module.exports = {
 			footer: "\n- User ID: %1\n- Nhóm: %2\n- ID nhóm: %3\n- Thời gian: %4"
 		},
 		en: {
-			title: "====== Bot logs ======",
-			added: "\n✅\nEvent: bot has been added to a new group\n- Added by: %1",
-			kicked: "\n❌\nEvent: bot has been kicked\n- Kicked by: %1",
-			footer: "\n- User ID: %1\n- Group: %2\n- Group ID: %3\n- Time: %4"
+			title: "======تحذير ======",
+			added: "\n✅\nلقد:تم إضافة القوت إلى مجموعة جديدة \n- بواسطة: %1",
+			kicked: "\n❌\nتبا: لقد تم طرد البوت من مجموعة\n- بواسطة: %1",
+			footer: "\n- آيدي المستخدم: %1\n- المجموعة: %2\n- آيدي المجموعة: %3\n- على الساعة: %4"
 		}
 	},
 
@@ -43,8 +43,6 @@ module.exports = {
 			if (event.logMessageType == "log:subscribe") {
 				if (!event.logMessageData.addedParticipants.some(item => item.userFbId == api.getCurrentUserID()))
 					return;
-				if (config.nickNameBot)
-					api.changeNickname(config.nickNameBot, event.threadID, api.getCurrentUserID());
 				threadName = (await api.getThreadInfo(threadID)).threadName;
 				const authorName = await usersData.getName(author);
 				msg += getLang("added", authorName);

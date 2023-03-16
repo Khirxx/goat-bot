@@ -2,10 +2,10 @@ const allOnEvent = global.GoatBot.onEvent;
 
 module.exports = {
 	config: {
-		name: "onEvent",
+		name: "حدث",
 		version: "1.0",
 		author: "NTKhang",
-		description: "Loop to all event in global.GoatBot.onEvent and run when have new event"
+		description: "Loop to all event in t.onEvent and run when have new event"
 	},
 
 	onStart: async ({ api, args, message, event, threadsData, usersData, dashBoardData, threadModel, userModel, dashBoardModel, role, commandName }) => {

@@ -23,10 +23,45 @@ module.exports = {
 			session2: "noon",
 			session3: "afternoon",
 			session4: "evening",
-			welcomeMessage: "Thank you for inviting me to the group!\nBot prefix: %1\nTo view the list of commands, please enter: %1help",
+			welcomeMessage: `༽༺༺ تم التوصيل  ༻༻༼
+         ✦✦✦✦✦✦✦✦✦✦✦
+               ✧✧✧✧✧✧✧
+تم توصيل بوت زكسل في جروبك 
+☑️☑️☑️☑️☑️☑️☑️☑️☑️
+بوت متكامل العاب وخدمان ومساعد
+🎁🔁🔁🔁🔁😎📛📛
+لا تزل الاعضاء بل البوت 
+❌❌❌❌❌❌❌
+حساب المطور:- 
+https://www.facebook.com/profile.php?id=100065172561645
+
+
+اذا تريد البوت في جروبك
+ راسل المطو 
+
+
+
+
+
+-----------------المعلومات----------------
+
+☆☆☆☆البوت به 56 امر☆☆☆☆
+☆☆☆المطور:-ملك الجحيم ☆☆☆
+_____________________________
+
+اذا ما فهمت طريقة عمل امر محدد
+ ☆ اكتب شرح واسم الامر مثال☆
+            ☆ شرح ترحيب ☆
+☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+
+شكرا لكم لاضافة بوت زكسل لجروبك
+           يسعدني ان اساعدك
+ 
+ ༺༺༺༺༻༻༻༻`,
 			multiple1: "you",
 			multiple2: "you guys",
-			defaultWelcomeMessage: `Hello {userName}.\nWelcome {multiple} to the chat group: {boxName}\nHave a nice {session} 😊`
+			defaultWelcomeMessage: `هلا {userName}.هذه مجموعة {boxName}\n`
 		}
 	},
 
@@ -51,14 +86,11 @@ module.exports = {
 				const threadName = threadData.threadName;
 				const userName = [], mentions = [];
 				let multiple = false;
-let nname ="";
-        let nid = "";
+
 				if (dataAddedParticipants.length > 1)
 					multiple = true;
 				for (const user of dataAddedParticipants) {
-					nname = user.fullname
-          nid = user.userFbId
-          userName.push(user.fullName);
+					userName.push(user.fullName);
 					mentions.push({
 						tag: user.fullName,
 						id: user.userFbId
@@ -86,7 +118,7 @@ let nname ="";
 								getLang("session4")
 					);
 
-				form.body = `${welcomeMessage}`;
+				form.body = welcomeMessage;
 
 				if (threadData.data.welcomeAttachment) {
 					const files = threadData.data.welcomeAttachment;
@@ -98,13 +130,7 @@ let nname ="";
 						.filter(({ status }) => status == "fulfilled")
 						.map(({ value }) => value);
 				}
-        let antiout = await threadsData.get(threadID, "settings.antiOut");
-
-        if(antiout == true && global.antiOut.includes(nid)){
-          message.send("ফকিন্নি "+nname+"\nওয়েলকাম ব্যাক")
-          global.antiOut.splice(global.antiOut.indexOf(nid), 1)
-        } else{
-				message.send(form);}
+				message.send(form);
 			};
 	}
 };
