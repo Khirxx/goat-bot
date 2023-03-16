@@ -3,17 +3,17 @@ const fs = require("fs-extra");
 
 module.exports = {
 	config: {
-		name: "affect",
+		name: "يوئثر",
 		version: "1.1",
 		author: "NIB",
 		countDown: 5,
 		role: 0,
-		shortDescription: "Affect image",
-		longDescription: "Affect image",
+		shortDescription: " تئثير علي الصور",
+		longDescription: "تئثير علي الصور",
 		category: "image",
 		guide: {
 			vi: "{pn} [@tag | để trống]",
-			en: "{pn} [@tag]"
+			en: "{pn} وتاغ @ لشخص "
 		}
 	},
 
