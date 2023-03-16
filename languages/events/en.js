@@ -3,38 +3,38 @@ module.exports = {
 	autoUpdateThreadInfo: {},
 	checkwarn: {
 		text: {
-			warn: "Member %1 has been warned 3 times before and has been banned from the chat box\n- Name: %1\n- Uid: %2\n- To unban, please use the \"%3warn unban <uid>\" command (with uid is the uid of the person you want to unban)",
-			needPermission: "Bot needs administrator permission to kick banned members"
+			warn: "العضو %1 تم تحذيره ثلاث مراة و تم طرده\n- إسمه: %1\n- آيديه: %2\n- ",
+			needPermission: "البوت يحتاج أدمن المجموعة لطرد المحضورين ✅"
 		}
 	},
 	leave: {
 		text: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			leaveType1: "left the group",
-			leaveType2: "was kicked from the group"
+			session1: "صباحا",
+			session2: "مساءا",
+			session3: "بعدالمساء",
+			session4: "ليلا",
+			leaveType1: "غادر مجموعة",
+			leaveType2: "تم طرده"
 		}
 	},
 	logsbot: {
 		text: {
-			title: "====== Bot logs ======",
-			added: "\n✅\nEvent: bot has been added to a new group\n- Added by: %1",
-			kicked: "\n❌\nEvent: bot has been kicked\n- Kicked by: %1",
-			footer: "\n- User ID: %1\n- Group: %2\n- Group ID: %3\n- Time: %4"
+			title: "====== إشعار البوت ======",
+			added: "\n✅\nالحدث: تم إضافة البوت لمجموعة جديدة\n- أضافه: %1",
+			kicked: "\n❌\nالحدث: تم طرد البوت من مجموعة\n- طرده: %1",
+			footer: "\n- صاحب الآيدي: %1\n- مجموعة: %2\n- بوكس آيدي: %3\n- الساعة: %4"
 		}
 	},
 	onEvent: {},
 	welcome: {
 		text: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			welcomeMessage: "Thank you for inviting me to the group!\nBot prefix: %1\nTo view the list of commands, please enter: %1help",
-			multiple1: "you",
-			multiple2: "you guys"
+			session1: "صباحك",
+			session2: "مسائك",
+			session3: "إفطارك",
+			session4: "جيبك و فلوسك",
+			welcomeMessage: "تحت الانشاء❤️",
+			multiple1: "بك",
+			multiple2: "بكم"
 		}
 	}
 };
