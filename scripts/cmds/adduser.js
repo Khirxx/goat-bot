@@ -2,22 +2,22 @@ const { findUid } = global.utils;
 
 module.exports = {
 	config: {
-		name: "adduser",
+		name: "اضف",
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
 		shortDescription: {
 			vi: "Thêm thành viên vào box chat",
-			en: "Add user to box chat"
+			en: "اضف شخص لجروب "
 		},
 		longDescription: {
 			vi: "Thêm thành viên vào box chat của bạn",
-			en: "Add user to box chat of you"
+			en: "إضافة المستخدم إلى مربع الدردشة الخاصة بك"
 		},
 		category: "box chat",
 		guide: {
-			en: "   {pn} [link profile | uid]"
+			en: " اضف ورابط الشخص او ايدي الخاص به"
 		}
 	},
 
@@ -29,10 +29,10 @@ module.exports = {
 			approve: "- Đã thêm %1 thành viên vào danh sách phê duyệt"
 		},
 		en: {
-			alreadyInGroup: "Already in group",
-			successAdd: "- Successfully added %1 members to the group",
-			failedAdd: "- Failed to add %1 members to the group",
-			approve: "- Added %1 members to the approval list"
+			alreadyInGroup: "بالفعل في المجموعة",
+			successAdd: "- تمت إضافة 1% أعضاء إلى المجموعة بنجاح",
+			failedAdd: "- فشلت إضافة1% أعضاء إلى المجموعة",
+			approve: "- تمت إضافة1 %  أعضاء إلى قائمة القبول"
 		}
 	},
 
